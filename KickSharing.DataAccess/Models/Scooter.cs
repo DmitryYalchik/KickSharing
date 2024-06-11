@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using KickSharing.DataAccess.DTOs.Scooter;
 using KickSharing.DataAccess.Models.Base;
 
@@ -14,6 +15,7 @@ namespace KickSharing.DataAccess.Models
 
         public bool IsBlocked { get; set; } = false;
 
+        [JsonIgnore]
         public virtual ICollection<Rent>? Rents { get; set; }
 
 
