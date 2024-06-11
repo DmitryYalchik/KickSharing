@@ -18,34 +18,60 @@ namespace KickSharing.WebAPI.Controllers
             this.priceInterface = priceInterface;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page">Pagination started from 1</param>
+        /// <param name="take"></param>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] int? page, [FromQuery] int? take)
         {
-            return Ok(await priceInterface.GetAll());
+            IEnumerable<Price>? currentList = await priceInterface.GetAll();
+            if (page != null && take != null)
+            {
+                currentList = currentList.Skip(((int)page - 1) * (int)take).Take((int)take);
+            }
+            return Ok(currentList);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("actual")]
         public async Task<IActionResult> GetLast()
         {
-            return Ok(priceInterface.GetAll().Result.Last());
+            return Ok((await priceInterface.GetAll()).Last());
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([Required] string id)
         {
             return Ok(await priceInterface.GetById(id));
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newPrice"></param>
+        /// <returns></returns>
         [HttpPost("{newPrice}")]
         public async Task<IActionResult> Post([Required] double newPrice)
         {
             return Ok(await priceInterface.Create(newPrice));
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([Required] string id)
         {
