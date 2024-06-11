@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KickSharing.WebAPI", "KickSharing.WebAPI\KickSharing.WebAPI.csproj", "{32C9BAF9-676E-4287-B8AE-845B12269CB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KickSharing.DataAccess", "KickSharing.DataAccess\KickSharing.DataAccess.csproj", "{7B1AE146-07E6-40E5-AAA2-983AA4F8A692}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{32C9BAF9-676E-4287-B8AE-845B12269CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32C9BAF9-676E-4287-B8AE-845B12269CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32C9BAF9-676E-4287-B8AE-845B12269CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1AE146-07E6-40E5-AAA2-983AA4F8A692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1AE146-07E6-40E5-AAA2-983AA4F8A692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1AE146-07E6-40E5-AAA2-983AA4F8A692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1AE146-07E6-40E5-AAA2-983AA4F8A692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
