@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KickSharing.WebAPI", "KickSharing.WebAPI\KickSharing.WebAPI.csproj", "{32C9BAF9-676E-4287-B8AE-845B12269CB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32C9BAF9-676E-4287-B8AE-845B12269CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32C9BAF9-676E-4287-B8AE-845B12269CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32C9BAF9-676E-4287-B8AE-845B12269CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32C9BAF9-676E-4287-B8AE-845B12269CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0A33B89-963C-42A2-BCF9-A93C316CB85F}
+	EndGlobalSection
+EndGlobal
