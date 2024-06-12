@@ -13,16 +13,26 @@ namespace KickSharing.DataAccess.Services
             db = _db;
         }
 
-        public async Task<Price> Create(double price)
+        /// <summary>
+        /// Create new Price
+        /// </summary>
+        /// <param name="price"></param>
+        /// <returns></returns>
+        public async Task<Price?> Create(double price)
         {
             var addedPrice = await db.Prices.AddAsync(new Price(price));
             await db.SaveChangesAsync();
             return addedPrice.Entity;
         }
 
+        /// <summary>
+        /// Delete some Price by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<bool> Delete(string id)
         {
-            if (GetById(id) != null)
+            if (await GetById(id) != null)
             {
                 db.Prices.Remove(await GetById(id));
                 await db.SaveChangesAsync();
@@ -31,14 +41,23 @@ namespace KickSharing.DataAccess.Services
             return false;
         }
 
-        public async Task<IEnumerable<Price>> GetAll()
+        /// <summary>
+        /// Get all Prices
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<Price>?> GetAll()
         {
             return await db.Prices.ToListAsync();
         }
 
-        public async Task<Price> GetById(string id)
+        /// <summary>
+        /// Get some Price by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Price?> GetById(string id)
         {
-            return await db.Prices.FirstAsync(x => x.Id == id);
+            return await db.Prices.FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

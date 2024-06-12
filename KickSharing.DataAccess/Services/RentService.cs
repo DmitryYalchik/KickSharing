@@ -13,16 +13,26 @@ namespace KickSharing.DataAccess.Services
             db = _db;
         }
 
-        public async Task<Rent> Create(Rent entity)
+        /// <summary>
+        /// Create new Rent
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public async Task<Rent?> Create(Rent entity)
         {
             var currentRent = await db.Rents.AddAsync(entity);
             await db.SaveChangesAsync();
             return currentRent.Entity;
         }
 
+        /// <summary>
+        /// Delete some Rent by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<bool> Delete(string id)
         {
-            if (GetById(id) != null)
+            if (await GetById(id) != null)
             {
                 db.Rents.Remove(await GetById(id));
                 await db.SaveChangesAsync();
@@ -31,22 +41,40 @@ namespace KickSharing.DataAccess.Services
             return false;
         }
 
-        public async Task<IEnumerable<Rent>> GetAll()
+        /// <summary>
+        /// Get all Rents
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<Rent>?> GetAll()
         {
             return await db.Rents.ToListAsync();
         }
 
-        public async Task<Rent> GetById(string id)
+        /// <summary>
+        /// Get some Rent by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Rent?> GetById(string id)
         {
-            return await db.Rents.FirstAsync(x => x.Id == id);
+            return await db.Rents.LastOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Rent> GetLast()
+        /// <summary>
+        /// Get last (actual) Rent
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Rent?> GetLast()
         {
-            return await db.Rents.LastAsync();
+            return await db.Rents.LastOrDefaultAsync();
         }
 
-        public async Task<Rent> Update(Rent entity)
+        /// <summary>
+        /// Update some Rent
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public async Task<Rent?> Update(Rent entity)
         {
             var currentRent = db.Rents.Update(entity);
             await db.SaveChangesAsync();

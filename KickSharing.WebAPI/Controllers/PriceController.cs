@@ -19,9 +19,9 @@ namespace KickSharing.WebAPI.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Get all prices
         /// </summary>
-        /// <param name="page">Pagination started from 1</param>
+        /// <param name="page">Pagination started from 1 page</param>
         /// <param name="take"></param>
         /// <returns></returns>
         [HttpGet]
@@ -36,46 +36,61 @@ namespace KickSharing.WebAPI.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Get last (actual) price
         /// </summary>
         /// <returns></returns>
         [HttpGet("actual")]
         public async Task<IActionResult> GetLast()
         {
+            if ((await priceInterface.GetAll()).Count() != 0)
+                return NotFound();
             return Ok((await priceInterface.GetAll()).Last());
         }
 
         /// <summary>
-        /// 
+        /// Get price by Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get([Required] string id)
         {
+            if (await priceInterface.GetById(id) != null)
+                NotFound();
             return Ok(await priceInterface.GetById(id));
         }
 
         /// <summary>
-        /// 
+        /// Create new price
         /// </summary>
         /// <param name="newPrice"></param>
         /// <returns></returns>
         [HttpPost("{newPrice}")]
         public async Task<IActionResult> Post([Required] double newPrice)
         {
+            if ((await priceInterface.GetAll()).Count() != 0)
+            {
+                if ((await priceInterface.GetAll()).Last().MinutePrice == newPrice)
+                {
+                    return Conflict("This Price is already actual");
+                }
+            }
             return Ok(await priceInterface.Create(newPrice));
         }
 
         /// <summary>
-        /// 
+        /// Delete price by Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([Required] string id)
         {
-            return await priceInterface.Delete(id) == true ? Ok(new { success = true }) : BadRequest(new { success = false });
+            if (await priceInterface.GetById(id) == null)
+                return NotFound("Price with this Id is not registered");
+            if (await priceInterface.Delete(id) == false)
+                return BadRequest();
+            return Ok();
         }
     }
 }

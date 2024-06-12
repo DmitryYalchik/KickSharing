@@ -13,7 +13,7 @@ namespace KickSharing.DataAccess.Services
             db = _db;
         }
 
-        public async Task<User> Create(User entity)
+        public async Task<User?> Create(User entity)
         {
             var currentUser = await db.Users.AddAsync(entity);
             await db.SaveChangesAsync();
@@ -22,7 +22,7 @@ namespace KickSharing.DataAccess.Services
 
         public async Task<bool> Delete(string id)
         {
-            if (GetById(id) != null)
+            if (await GetById(id) != null)
             {
                 db.Users.Remove(await GetById(id));
                 await db.SaveChangesAsync();
@@ -31,17 +31,17 @@ namespace KickSharing.DataAccess.Services
             return false;
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<User>?> GetAll()
         {
             return await db.Users.ToListAsync();
         }
 
-        public async Task<User> GetById(string id)
+        public async Task<User?> GetById(string id)
         {
-            return await db.Users.FirstAsync(x => x.Id == id);
+            return await db.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<User> Update(User entity)
+        public async Task<User?> Update(User entity)
         {
             var currentUser = db.Users.Update(entity);
             await db.SaveChangesAsync();

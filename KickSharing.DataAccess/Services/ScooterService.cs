@@ -22,7 +22,7 @@ namespace KickSharing.DataAccess.Services
 
         public async Task<bool> Delete(string id)
         {
-            if (GetById(id) != null)
+            if (await GetById(id) != null)
             {
                 db.Scooters.Remove(await GetById(id));
                 await db.SaveChangesAsync();
@@ -38,7 +38,7 @@ namespace KickSharing.DataAccess.Services
 
         public async Task<Scooter> GetById(string id)
         {
-            return await db.Scooters.FirstAsync(x => x.Id == id);
+            return await db.Scooters.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Scooter> Update(Scooter entity)
