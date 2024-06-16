@@ -17,4 +17,8 @@
     <ProjectReference Include="..\KickSharing.DataAccess\KickSharing.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
