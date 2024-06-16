@@ -35,8 +35,8 @@ namespace KickSharing.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c6ec6546-e614-4296-bb66-a17564e022ba",
-                            CreatedDateTime = new DateTime(2024, 6, 11, 19, 53, 39, 923, DateTimeKind.Utc).AddTicks(5405),
+                            Id = "7b8f98a9-e541-43ff-aadf-7c1f2f91e7ef",
+                            CreatedDateTime = new DateTime(2024, 6, 16, 8, 15, 35, 936, DateTimeKind.Utc).AddTicks(7006),
                             MinutePrice = 5.0
                         });
                 });
@@ -111,6 +111,12 @@ namespace KickSharing.DataAccess.Migrations
                     b.Property<bool>("IsBlocked")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Latitude")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Longitude")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Identifier")
@@ -121,9 +127,9 @@ namespace KickSharing.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "041cec82-b5ce-4554-9563-b0e562c0971e",
+                            Id = "4100811c-bfed-4fe6-b047-3f980df104ce",
                             ChargePercent = 100,
-                            CreatedDateTime = new DateTime(2024, 6, 11, 19, 53, 39, 923, DateTimeKind.Utc).AddTicks(5713),
+                            CreatedDateTime = new DateTime(2024, 6, 16, 8, 15, 35, 936, DateTimeKind.Utc).AddTicks(7299),
                             Identifier = "AA0001",
                             IsBlocked = false
                         });
@@ -180,8 +186,8 @@ namespace KickSharing.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7ffba6e5-f413-40b6-8a2b-b8379174eeeb",
-                            CreatedDateTime = new DateTime(2024, 6, 11, 19, 53, 39, 923, DateTimeKind.Utc).AddTicks(5559),
+                            Id = "aa4995d2-d1b4-4e3e-a8d2-51271a5ce49f",
+                            CreatedDateTime = new DateTime(2024, 6, 16, 8, 15, 35, 936, DateTimeKind.Utc).AddTicks(7157),
                             DateBirth = new DateTime(2003, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "dmitry_yalchik@mail.ru",
                             IsBlocked = false,

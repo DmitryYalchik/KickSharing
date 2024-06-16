@@ -14,6 +14,8 @@ namespace KickSharing.DataAccess.Models
         public int ChargePercent { get; set; }
 
         public bool IsBlocked { get; set; } = false;
+        public string? Latitude { get; set; }
+        public string? Longitude { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Rent>? Rents { get; set; }
@@ -26,6 +28,8 @@ namespace KickSharing.DataAccess.Models
         {
             this.Identifier = registerScooter.Identifier;
             this.ChargePercent = registerScooter.ChargePercent;
+            this.Latitude = registerScooter.Latitude;
+            this.Longitude = registerScooter.Longitude;
         }
 
         public void Update(UpdateScooter updateScooter)
@@ -33,6 +37,8 @@ namespace KickSharing.DataAccess.Models
             this.Identifier = updateScooter.Identifier;
             this.ChargePercent = updateScooter.ChargePercent;
             this.IsBlocked = updateScooter.IsBlocked;
+            this.Latitude = updateScooter.Latitude;
+            this.Longitude = updateScooter.Longitude;
         }
     }
 }

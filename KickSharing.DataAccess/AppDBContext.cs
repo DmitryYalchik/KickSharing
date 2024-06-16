@@ -19,7 +19,9 @@ namespace KickSharing.DataAccess
         public AppDBContext(DbContextOptions<AppDBContext> options)
         : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
+            //Database.Migrate();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
